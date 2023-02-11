@@ -42,4 +42,6 @@ urlpatterns = [
     path("register/", views.register, name="register"),
     # dashboard
     path("", views.dashboard, name="dashboard"),
+    # edit
+    path("edit/", views.edit, name="edit"),
 ]
