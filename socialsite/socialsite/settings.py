@@ -81,6 +81,14 @@ DATABASES = {
     }
 }
 
+# Authentication backends
+# https://docs.djangoproject.com/en/4.1/topics/auth/customizing/#other-authentication-sources
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "account.authentication.EmailAuthBackend",
+]
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -125,8 +133,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 ## Redircts
 LOGIN_REDIRECT_URL = "dashboard"
-LOGIN = "login"
-LOGOUT = "logout"
+LOGIN_URL = "login"
+LOGOUT_URL = "logout"
 
 # Email configuration for dev
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
