@@ -398,3 +398,8 @@ img.user-detail {
     font-style: italic;
     color: #ccc;
 }
+
+.center{
+    text-align: center;
+    margin: 0 auto;
+}
