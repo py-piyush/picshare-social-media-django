@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-9%6jm1)*o25ob1ppmdl$q+qa4dgcjf(3^xw)i7j#zc9odo%*m0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["mypchost.com", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "social_django",
+    "django_extensions",
 ]
 
 MIDDLEWARE = [
@@ -48,6 +50,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "social_django.middleware.SocialAuthExceptionMiddleware",
 ]
 
 ROOT_URLCONF = "socialsite.urls"
@@ -87,6 +90,7 @@ DATABASES = {
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     "account.authentication.EmailAuthBackend",
+    "social_core.backends.facebook.FacebookOAuth2",
 ]
 
 
@@ -142,3 +146,12 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # Media
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
+# To handle cancellation during social authentication
+SOCIAL_AUTH_LOGIN_ERROR_URL = "login"
+# DEBUG = False
+
+# Facebook Auth
+SOCIAL_AUTH_FACEBOOK_KEY = "1530576020759013"
+SOCIAL_AUTH_FACEBOOK_SECRET = "880129ba4383c1c39a54e5c08bbc8d86"
+SOCIAL_AUTH_FACEBOOK_SCOPE = ["email"]
