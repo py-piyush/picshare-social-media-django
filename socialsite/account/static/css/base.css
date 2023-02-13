@@ -249,14 +249,18 @@ ul.messages li a.close {
 
 /* social-auth */
 .social {
-    display: flex;
-    justify-content: space-around;
+    width: 80%;
+    margin: 0 auto;
 }
-
+.social ul{
+    padding: 0;
+    width: 100%;
+}
 .social li {
     list-style: none;
     padding: 10px 20px;
     margin: 0 0 10px 0;
+    border-radius: 25px;
 }
 
 .social li a {

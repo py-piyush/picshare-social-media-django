@@ -91,6 +91,7 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     "account.authentication.EmailAuthBackend",
     "social_core.backends.facebook.FacebookOAuth2",
+    "social_core.backends.google.GoogleOAuth2",
 ]
 
 
@@ -155,3 +156,9 @@ SOCIAL_AUTH_LOGIN_ERROR_URL = "login"
 SOCIAL_AUTH_FACEBOOK_KEY = "1530576020759013"
 SOCIAL_AUTH_FACEBOOK_SECRET = "880129ba4383c1c39a54e5c08bbc8d86"
 SOCIAL_AUTH_FACEBOOK_SCOPE = ["email"]
+
+# Google Auth
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = (
+    "845351220964-6u2dps3cuf3afrhrejhbqg62v2rjv10q.apps.googleusercontent.com"
+)
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "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"
