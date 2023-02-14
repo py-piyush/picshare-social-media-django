@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import ImageBookmarkForm, ImagePostForm
+from .models import Image
 
 # Create your views here.
 
@@ -9,6 +10,7 @@ from .forms import ImageBookmarkForm, ImagePostForm
 @login_required
 def image_post(request):
     if request.method == "POST":
+        # print(request.user)
         form = ImagePostForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             cd = form.cleaned_data
@@ -37,4 +39,11 @@ def image_bookmark(request):
         form = ImageBookmarkForm(data=request.GET)
     return render(
         request, "images/image/create.html", {"section": "images", "form": form}
+    )
+
+
+def image_detail(request, id, slug):
+    image = get_object_or_404(Image, id=id, slug=slug)
+    return render(
+        request, "images/image/detail.html", {"section": "images", "image": image}
     )
