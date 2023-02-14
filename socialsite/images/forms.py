@@ -5,7 +5,13 @@ from django.utils.text import slugify
 from .models import Image
 
 
-class ImageCreateForm(forms.ModelForm):
+class ImagePostForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = ["title", "description", "image"]
+
+
+class ImageBookmarkForm(forms.ModelForm):
     class Meta:
         model = Image
         fields = ["title", "url", "description"]
