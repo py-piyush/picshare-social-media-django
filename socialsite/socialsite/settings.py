@@ -178,3 +178,9 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = (
 )
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "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"
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ["https://www.googleapis.com/auth/userinfo.email"]
+
+
+if DEBUG:
+    import mimetypes
+    mimetypes.add_type('application/javascript', '.js', True)
+    mimetypes.add_type('text/css', '.css', True)
