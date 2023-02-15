@@ -323,6 +323,12 @@ a.follow {
     float: right;
     margin-top: -8px;
 }
+.info .title{
+    font-weight: bold;
+}
+.info div{
+    margin: 10px 0;
+}
 
 #image-list {
     overflow: hidden;
