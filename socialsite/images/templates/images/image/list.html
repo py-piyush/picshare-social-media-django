@@ -11,6 +11,9 @@
     var page = 1
     var emptyPage = false
     var blockRequest = false
+    document.querySelectorAll("a.like").forEach(event=>{
+        event.addEventListener("click", clickHandler);
+    })
 
     window.addEventListener('scroll', function(e){
         var margin = document.body.clientHeight - window.innerHeight - 200
@@ -26,46 +29,15 @@
                     var imageList = document.getElementById('image-list')
                     imageList.insertAdjacentHTML('beforeEnd', html)
                     blockRequest = false
+                    document.querySelectorAll("a.like").forEach(event=>{
+                    event.addEventListener("click", clickHandler);
+                    })
                 }
             })
         }
     })
     const scrollEvent = new Event('scroll')
     window.dispatchEvent(scrollEvent)
-    const url = "{% url 'images:like' %}";
-var options = {
-  method: "POST",
-  headers: { "X-CSRFToken": csrftoken },
-  mode: "same-origin",
-};
-document.querySelectorAll("a.like").forEach(event=>{
-    event.addEventListener("click", function (e) {
-  e.preventDefault();
-  var likeButton = this;
-
-  var formData = new FormData();
-  formData.append("id", likeButton.dataset.id);
-  formData.append("action", likeButton.dataset.action);
-  options["body"] = formData;
-
-  fetch(url, options)
-    .then((response) => response.json())
-    .then((data) => {
-      if (data["status"] === "ok") {
-        var prevAction = likeButton.dataset.action;
-
-        var action = prevAction === "like" ? "unlike" : "like";
-        likeButton.dataset.action = action;
-        likeButton.innerHTML = action;
-
-        var likeCount = likeButton.previousSibling.previousSibling;
-        var totalLikes = parseInt(likeCount.innerHTML);
-        likeCount.innerHTML =
-          prevAction === "like" ? totalLikes + 1 : totalLikes - 1;
-      }
-    });
-});
-})
 
 
 {% endblock domready %}

@@ -40,37 +40,6 @@
     {% endwith %}
 {% endblock content %}
 {% block domready %}
-const url = "{% url 'images:like' %}";
-var options = {
-  method: "POST",
-  headers: { "X-CSRFToken": csrftoken },
-  mode: "same-origin",
-};
-document.querySelector("a.like").addEventListener("click", function (e) {
-  e.preventDefault();
-  var likeButton = this;
-
-  var formData = new FormData();
-  formData.append("id", likeButton.dataset.id);
-  formData.append("action", likeButton.dataset.action);
-  options["body"] = formData;
-
-  fetch(url, options)
-    .then((response) => response.json())
-    .then((data) => {
-      if (data["status"] === "ok") {
-        var prevAction = likeButton.dataset.action;
-
-        var action = prevAction === "like" ? "unlike" : "like";
-        likeButton.dataset.action = action;
-        likeButton.innerHTML = action;
-
-        var likeCount = document.querySelector(".total");
-        var totalLikes = parseInt(likeCount.innerHTML);
-        likeCount.innerHTML =
-          prevAction === "like" ? totalLikes + 1 : totalLikes - 1;
-      }
-    });
-});
+document.querySelector("a.like").addEventListener("click", clickHandler);
 
 {% endblock domready %}
