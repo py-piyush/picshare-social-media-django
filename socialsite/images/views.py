@@ -19,7 +19,7 @@ def image_post(request):
             new_image = form.save(commit=False)
             new_image.user = request.user
             new_image.save()
-            messages.success("Posted successfully")
+            messages.success(request, "Posted successfully")
             return redirect(new_image.get_absolute_url())
     else:
         form = ImagePostForm()

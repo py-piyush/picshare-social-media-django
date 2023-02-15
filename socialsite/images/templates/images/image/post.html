@@ -3,7 +3,7 @@
 {% block content %}
     <h1>Post an image</h1>
     <div class="form-container">
-        <form enctype="mutlipart/form-data" method="post">
+        <form enctype="multipart/form-data" method="post">
             {{form.as_p}}
             {% csrf_token %}
             <input type="submit" value="Post">
