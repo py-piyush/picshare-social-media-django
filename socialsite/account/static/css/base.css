@@ -304,6 +304,7 @@ ul.messages li a.close {
 }
 
 .image-info div {
+    width: 300px;
     padding: 20px 0;
     overflow: auto;
 }
@@ -318,6 +319,7 @@ ul.messages li a.close {
 
 a.like,
 a.follow {
+    width: auto;
     float: right;
     margin-top: -8px;
 }
@@ -348,16 +350,29 @@ a.follow {
     color: #333;
 }
 
+/* .image-likes{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+} */
+
 .image-likes div {
     float: left;
     width: auto;
+    height: 40px;
     padding: 10px;
     text-align: center;
 }
+.image-likes div p{
+    margin: 0;
+    display: inline-block;
+    position: relative;
+    top: -10px;
+}
 
 .image-likes img {
-    width: 120px;
-    height: 120px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
 }
 
