@@ -42,7 +42,7 @@
     <script>
         const csrftoken = Cookies.get('csrftoken')
         document.addEventListener('DOMContentLoaded', (event)=>{
-        const url = "{% url 'images:like' %}";
+        //const url = "{% url 'images:like' %}";
         var options = {
         method: "POST",
         headers: { "X-CSRFToken": csrftoken },
@@ -50,26 +50,29 @@
         };
         function clickHandler(e){
             e.preventDefault();
-            var likeButton = this;
+            var button = this;
             var formData = new FormData();
-            formData.append("id", likeButton.dataset.id);
-            formData.append("action", likeButton.dataset.action);
+            formData.append("id", button.dataset.id);
+            formData.append("action", button.dataset.action);
             options["body"] = formData;
 
             fetch(url, options)
                 .then((response) => response.json())
                 .then((data) => {
                 if (data["status"] === "ok") {
-                    var prevAction = likeButton.dataset.action;
+                    var prevAction = button.dataset.action;
+                    if (prevAction === 'like') action = 'unlike'
+                    else if (prevAction === 'unlike')action = 'like'
+                    else if (prevAction === 'follow') action = 'unfollow'
+                    else if (prevAction === 'unfollow') action = 'follow'
 
-                    var action = prevAction === "like" ? "unlike" : "like";
-                    likeButton.dataset.action = action;
-                    likeButton.innerHTML = action;
+                    button.dataset.action = action;
+                    button.innerHTML = action;
 
-                    var likeCount = likeButton.previousElementSibling.querySelector('.total');
-                    var totalLikes = parseInt(likeCount.innerHTML);
-                    likeCount.innerHTML =
-                    prevAction === "like" ? totalLikes + 1 : totalLikes - 1;
+                    var count = button.previousElementSibling.querySelector('.total');
+                    var totalLikesOrFollowers = parseInt(count.innerHTML);
+                    if (prevAction === 'like' || prevAction === 'follow') count.innerHTML = totalLikesOrFollowers + 1
+                    else count.innerHTML = totalLikesOrFollowers - 1
                 }
                 });
         }
