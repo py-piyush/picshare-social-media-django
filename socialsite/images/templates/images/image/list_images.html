@@ -1,6 +1,7 @@
 {% load thumbnail %}
 {% for image in images %}
-    <div class="image">
+<div class="image">
+        <p><a href="{{image.user.get_absolute_url}}">{{image.user.username}}</a></p>
         <a href="{{image.get_absolute_url}}">{%thumbnail image.image 300x300 crop='smart' as im%}
         <a href="{{image.get}}">
         <img src="{{im.url}}" alt="">

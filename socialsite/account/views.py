@@ -12,7 +12,11 @@ from .models import Profile, Contact
 # Create your views here.
 @login_required
 def dashboard(request):
-    return render(request, "account/dashboard.html", {"section": "dashboard"})
+    return render(
+        request,
+        "account/dashboard.html",
+        {"section": "dashboard", "user": request.user},
+    )
 
 
 # def user_login(request):
@@ -93,6 +97,8 @@ def user_list(request):
 @login_required
 def user_detail(request, username):
     user = get_object_or_404(User, username=username, is_active=True)
+    if request.user.id == user.id:
+        return redirect(reverse("dashboard"))
     return render(
         request, "account/user/detail.html", {"section": "people", "user": user}
     )

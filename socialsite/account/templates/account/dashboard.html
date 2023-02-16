@@ -3,10 +3,10 @@
 {% block content %}
     <h1>Dashboard</h1>
     <p>Welcome to your dashboard</p>
-    {% with total_images_created=request.user.images_created.count%}
-        <p>You have shared {{total_images_created}} image{{total_images_created|pluralize}}</p>
-    {% endwith %}
-    <p><a href="{% url 'images:post' %}">Post</a></p>
-    <p><a href="{% url 'edit' %}">Edit Profile</a></p>
-    <p><a href="{% url 'password_change' %}">Change Password</a></p>
+    {% include 'account/user/profile_page.html' %}
 {% endblock content %}
+{% block domready %}
+    document.querySelectorAll("a.like").forEach(event=>{
+        event.addEventListener("click", clickHandler);
+    })
+{% endblock domready %}
