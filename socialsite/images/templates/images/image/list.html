@@ -11,7 +11,6 @@
     var page = 1
     var emptyPage = false
     var blockRequest = false
-    const url = '{% url 'images:like' %}'
     document.querySelectorAll("a.like").forEach(event=>{
         event.addEventListener("click", clickHandler);
     })

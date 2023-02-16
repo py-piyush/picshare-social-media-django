@@ -40,7 +40,6 @@
     {% endwith %}
 {% endblock content %}
 {% block domready %}
-const url = '{% url 'images:like' %}'
 document.querySelector("a.like").addEventListener("click", clickHandler);
 
 {% endblock domready %}

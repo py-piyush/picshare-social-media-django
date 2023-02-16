@@ -28,3 +28,10 @@
         </div>
     {% endwith %}
 {% endblock content %}
+{% block domready %}
+document.querySelector("a.follow").addEventListener("click", clickHandler);
+document.querySelectorAll("a.like").forEach(event=>{
+        event.addEventListener("click", clickHandler);
+    })
+
+{% endblock domready %}

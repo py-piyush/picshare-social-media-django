@@ -42,7 +42,7 @@
     <script>
         const csrftoken = Cookies.get('csrftoken')
         document.addEventListener('DOMContentLoaded', (event)=>{
-        //const url = "{% url 'images:like' %}";
+        let url = ''
         var options = {
         method: "POST",
         headers: { "X-CSRFToken": csrftoken },
@@ -55,6 +55,8 @@
             formData.append("id", button.dataset.id);
             formData.append("action", button.dataset.action);
             options["body"] = formData;
+            if (e.target.classList.contains('like'))url="{% url 'images:like' %}"
+            else url = "{% url 'user_follow' %}"
 
             fetch(url, options)
                 .then((response) => response.json())
