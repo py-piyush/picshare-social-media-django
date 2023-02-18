@@ -85,3 +85,20 @@ $ python manage.py runserver
 Go to `http://localhost:8000/account`
 
 ### Demo Pictures
+
+- Registration Page
+  ![](images/registration_page.png)
+- Login Page
+  ![](images/login_page.png)
+- User dashboard
+  ![](images/user_dashboard.png)
+- Create post form
+  ![](images/post_image.png)
+- All posts
+  ![](images/image_list.png)
+- Post detail
+  ![](images/image_detail.png)
+- All users
+  ![](images/users_list.png)
+- User detail
+  ![](images/user_profile.png)

@@ -25,7 +25,7 @@
                     <li><a href="{% url 'password_change' %}">Change Password</a></li>
                     <li><a href="{% url 'logout' %}">Logout</a></li>
                     <li>
-                        {% if request.user.photo %}
+                        {% if request.user.profile.photo %}
                         <img src="{{request.user.profile.photo.url}}" alt="" class="header-img">
                         {% else %}
                         <img src="{% static 'images/default.png' %}" alt="" class="header-img">
