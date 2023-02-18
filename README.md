@@ -46,8 +46,8 @@ $ pip install -r requirements.txt
 127.0.0.1 mypchost.com
 ```
 
-- [Authentication using Facebook]()
-- [Authentication using Google]()
+- [Setup Facebook authentication]()
+- [Setup Google authentication]()
 
 #### 4. Configure environment variables
 
