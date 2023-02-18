@@ -46,7 +46,7 @@ $ pip install -r requirements.txt
 127.0.0.1 mypchost.com
 ```
 
-- [Setup Facebook authentication]()
+- [Setup Facebook authentication](https://github.com/py-piyush/picshare-social-media-django/blob/main/facebook_auth.md)
 - [Setup Google authentication]()
 
 #### 4. Configure environment variables
