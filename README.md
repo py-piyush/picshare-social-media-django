@@ -38,7 +38,7 @@ $ pip install -r requirements.txt
 
 #### 3. Setup Facebook and Google authentication
 
-> If you don't want to use social authentication, skip to step 6
+> If you don't want to use social authentication, comment out social auth keys in `settings.py` and skip to step 5 → 7
 
 - Locate hosts file in your pc and add following line to it
 
@@ -65,7 +65,13 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY="XXX"
 
 ```
 
-#### 5. Run server
+#### 5. Migrate Database
+
+```bash
+$ python manage.py migrate
+```
+
+#### 6. Run server
 
 Go to directory where `manage.py` exists, and run following command
 
@@ -76,7 +82,7 @@ $ python manage.py runserver_plus --cert-file --cert.crt
 Go to `https://mypchost.com:8000/account`.
 Your browser will show a security warning because you are using a self-generated certificate. Click on Advanced and continue to site
 
-#### 6. Run server without social authentication using http
+#### 7. Run server without social authentication using http
 
 ```bash
 $ python manage.py runserver
