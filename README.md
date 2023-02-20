@@ -4,6 +4,8 @@ Picshare is a image sharing web application consisting of a complete login/regis
 
 ### Video Demo
 
+> https://youtu.be/AO9AkVaWAtQ
+
 ### Features
 
 - User authentication and registration
@@ -40,14 +42,15 @@ $ pip install -r requirements.txt
 
 > If you don't want to use social authentication, comment out social auth keys in `settings.py` and skip to step 5 → 7
 
-- Locate hosts file in your pc and add following line to it
+- Locate hosts file in your pc, on Windows, the hosts file is located at `C:\Windows\System32\Drivers\etc\hosts`, and add following line to it
 
-```
-127.0.0.1 mypchost.com
-```
+  ```
+  127.0.0.1 mypchost.com
+  ```
 
-- [Setup Facebook authentication](https://github.com/py-piyush/picshare-social-media-django/blob/main/facebook_auth.md)
-- [Setup Google authentication](https://github.com/py-piyush/picshare-social-media-django/blob/main/google_auth.md)
+  - [Setup Facebook authentication](https://github.com/py-piyush/picshare-social-media-django/blob/main/facebook_auth.md)
+
+  - [Setup Google authentication](https://github.com/py-piyush/picshare-social-media-django/blob/main/google_auth.md)
 
 #### 4. Configure environment variables
 
