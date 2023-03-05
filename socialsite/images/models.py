@@ -37,3 +37,19 @@ class Image(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, related_name="commented", on_delete=models.CASCADE
+    )
+    post = models.ForeignKey(Image, on_delete=models.CASCADE, related_name="comments")
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["created"]
+
+    def __str__(self):
+        return f"Comment by {self.user.username} on {self.post.title}"

@@ -1,0 +1,7 @@
+<h2>Add a Comment</h2>
+<div class="form-container comment-form">
+  <form action="{% url 'images:post_comment' image.id %}" method="post">
+    {{form.as_p}} {% csrf_token %}
+    <input type="submit" value="Add Comment" />
+  </form>
+</div>

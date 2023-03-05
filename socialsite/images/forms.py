@@ -2,7 +2,7 @@ import requests
 from django import forms
 from django.core.files.base import ContentFile
 from django.utils.text import slugify
-from .models import Image
+from .models import Image, Comment
 
 
 class ImagePostForm(forms.ModelForm):
@@ -38,3 +38,9 @@ class ImageBookmarkForm(forms.ModelForm):
         if commit:
             image.save()
         return image
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ["body"]

@@ -109,6 +109,10 @@ ol {
     padding: 30px;
     text-align: center;
 }
+.comment-form{
+    margin: 0;
+    float: left;
+}
 
 /* forms */
 form {
@@ -366,11 +370,10 @@ a.follow {
     color: #333;
 }
 
-/* .image-likes{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-} */
+.image-likes{
+    display: block;
+}
+
 
 .image-likes div {
     float: left;
@@ -390,6 +393,11 @@ a.follow {
     width: 30px;
     height: 30px;
     border-radius: 50%;
+}
+.comments{
+    float: left;
+    position: absolute;
+    left: 100px;
 }
 
 /* users */

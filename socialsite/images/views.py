@@ -4,7 +4,7 @@ from django.views.decorators.http import require_POST
 from django.http import JsonResponse, HttpResponse
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .forms import ImageBookmarkForm, ImagePostForm
+from .forms import ImageBookmarkForm, ImagePostForm, CommentForm
 from .models import Image
 
 # Create your views here.
@@ -47,8 +47,11 @@ def image_bookmark(request):
 
 def image_detail(request, id, slug):
     image = get_object_or_404(Image, id=id, slug=slug)
+    form = CommentForm()
     return render(
-        request, "images/image/detail.html", {"section": "images", "image": image}
+        request,
+        "images/image/detail.html",
+        {"section": "images", "image": image, "form": form},
     )
 
 
@@ -93,4 +96,22 @@ def image_list(request):
 
     return render(
         request, "images/image/list.html", {"section": "images", "images": images}
+    )
+
+
+@login_required
+@require_POST
+def image_comment(request, image_id):
+    image = get_object_or_404(Image, id=image_id)
+    comment = None
+    form = CommentForm(data=request.POST)
+    if form.is_valid():
+        comment = form.save(commit=False)
+        comment.post = image
+        comment.user = request.user
+        comment.save()
+    return render(
+        request,
+        "images/image/detail.html",
+        {"section": "images", "image": image, "form": form},
     )
