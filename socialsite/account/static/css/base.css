@@ -372,7 +372,9 @@ a.follow {
 }
 
 .image-likes{
-    display: block;
+    width: 50%;
+    padding: 20px 0;
+    overflow: auto;
 }
 
 
