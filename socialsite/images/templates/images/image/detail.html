@@ -7,9 +7,9 @@
     <a href="{{image.image.url}}">
         <img src="{%thumbnail image.image 300x0%}" alt="{{image.title}}" class="image-detail">
     </a>
-    {% with total_likes=image.users_like.count users_like=image.users_like.all %}
-        <div class="image-info">
-            <div>
+    <div class="image-info">
+        <div>
+                {% with total_likes=image.users_like.count users_like=image.users_like.all %}
                 <span class="count">
                     <span class="total">{{total_likes}}</span>
                      like{{total_likes|pluralize}}
@@ -21,6 +21,7 @@
                         Like
                     {% endif %}
                 </a>
+                {% endwith %}
             </div>
             {{image.description|linebreaks}}
         </div>
@@ -39,9 +40,20 @@
         </div>
         <br>
         <div class="comments">
+            {% with comments.count as total_comments %}
+                <h2>{{total_comments}} comment{{total_comments|pluralize}}</h2>
+            {% endwith %}
+            {% for comment in comments %}
+              <div class="comment">
+                <p><a href="{{comment.user.get_absolute_url}}">{{comment.user.username}}</a></p>
+                <p class="info">
+                    {{comment.created}}
+                </p>
+                {{comment.body|linebreaks}}
+              </div>
+            {% endfor %}
             {% include 'images/comment/comment_form.html' %}
         </div>
-    {% endwith %}
 {% endblock content %}
 {% block domready %}
 document.querySelector("a.like").addEventListener("click", clickHandler);

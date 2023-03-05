@@ -111,6 +111,7 @@ ol {
 }
 .comment-form{
     margin: 0;
+    padding: 0;
     float: left;
 }
 
@@ -394,10 +395,23 @@ a.follow {
     height: 30px;
     border-radius: 50%;
 }
-.comments{
-    float: left;
-    position: absolute;
-    left: 100px;
+
+.comment {
+    padding: 10px;
+}
+.comment p{
+    margin: 0;
+}
+
+.comment:nth-child(even) {
+    background: #efefef;
+}
+
+.comment .info {
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 10px;
+    color: #666;
 }
 
 /* users */
