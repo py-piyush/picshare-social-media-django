@@ -18,6 +18,7 @@ Picshare is a image sharing web application consisting of a complete login/regis
 - Share images from your pc
 - Share images directly from any other website using bookmarklet
 - Like/unlike posts
+- Comment on post
 
 ### Run on your local machine
 
